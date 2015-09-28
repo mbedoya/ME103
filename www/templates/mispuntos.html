@@ -1,0 +1,75 @@
+<ion-view view-title="" >
+    <ion-content>
+        <div class="list" >
+            <label class="item item-avatar">
+                <div class="icono punto"></div>
+                <h2>Puntos disponibles</h2>
+                <p>
+                    Estos son los puntos que puedes redimir
+                </p>
+                <span class="item-note">
+                    <strong>{{ puntosDisponibles() }}</strong>
+                </span>
+            </label>
+            <label class="item item-avatar" ng-show="mostrarPuntosPorPerder()">
+                <div class="icono bocina"></div>
+                <div ng-show="mostrarMensajeAcumulados()">
+                    <span>
+                        Puntos que no acumulas
+                    </span>
+                    <span ng-show="diasParaPago()>=1">si no pagas antes del
+                        {{campana.fechaMontajePedido | date: 'dd' }} de  {{campana.fechaMontajePedido | date: 'MMMM' }}
+                    </span>
+                    <span ng-show="diasParaPago()<0 && !hoyEsEncuentro() && !hoyEsCorreteo()">
+                        si no pagas máximo el
+                        {{campana.fechaCorreteo | date: 'dd' }} de  {{campana.fechaCorreteo | date: 'MMMM' }}
+                    </span>
+                    <span ng-show="diasParaPago()<=0 && (hoyEsEncuentro() || hoyEsCorreteo())">
+                        si no pagas hoy
+                    </span> antes de las 4 de la tarde
+                    <br />
+                </div>
+                <p>
+                    Estos puntos se verán reflejados como disponibles después del {{campana.fechaCorreteo | date: 'dd' }} de  {{campana.fechaCorreteo | date: 'MMMM' }}.
+                </p>
+                <span class="item-note">
+                    <strong> {{ puntosPorPerder() }} </strong>
+                </span>
+            </label>
+            <label class="item item-avatar" ng-show="mostrarPuntosAVencer()">
+                <div class="icono calendario"></div>
+                <span>
+                    Puntos a vencer en Campaña {{campanaVencimientoPuntos()}}
+                </span>
+                <span class="item-note">
+                    <strong> {{ puntosAVencer() }} </strong>
+                </span>
+            </label>
+            <a class="item item-avatar item-icon-right" ng-show="mostrarPuntosRedimidos()" ng-click="mostrarPremios()" >
+               <div class="icono regalo"></div>
+                <span>
+                    Puntos redimidos campaña {{ campanaAnterior() }}
+                </span>
+                <span class="item-note">
+                  <strong> {{ puntosRedimidos() }} </strong>
+                </span>
+                <i class="icon ion-chevron-right"></i>
+            </a>
+
+            <a class="item no-border" href="#"  >
+                &nbsp;
+            </a>
+
+            <a class="item no-border" href="#"  >
+                &nbsp;
+            </a>
+
+        </div>
+
+        <!-- Zona de Automatización de Pruebas -->
+        <input id="disponibles" type="hidden" value='{{ puntosDisponibles() }}' />
+        <input id="porperder" type="hidden" value='{{ puntosPorPerder() }}' />
+        <input id="avencer" type="hidden" value='{{ puntosAVencer() }}' />
+        <input id="redimidos" type="hidden" value='{{ puntosRedimidos() }}' />
+    </ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+<ion-view view-title="Pregunta 1">
+    <ion-nav-bar class="bar-stable">
+  <ion-nav-back-button class="button-stable">
+  </ion-nav-back-button>
+</ion-nav-bar>
+    <ion-content>
+        <div class="content-login padding">
+            <img src="img/pregunta1.png" class="login-img" />
+            <h3>Hola {{datos.nombre | pascal}}, ¿Cuál fue la última Campaña en la que montaste pedido?</h3>
+            <h5>Si montaste tu pedido hoy no tengas en cuenta esta campaña para tu respuesta</h5>
+            <h5>Esta información la puedes encontrar en la parte superior de la primera página de tu factura.</h5>
+            <form ng-submit="capturarCedula()">
+                <div class="list">
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Año
+                        </div>
+                        <select ng-model="modelo.ano" ng-change="cambioAno()">
+                            <option selected>Selecciona</option>
+                            <option value="{{anoAnterior()}}" ng-show="mostrarAnoAnterior()">{{anoAnterior()}}</option>
+                            <option value="{{anoActual()}}">{{anoActual()}}</option>
+                        </select>
+                    </label>
+
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Campaña
+                        </div>
+                        <select ng-model="modelo.campana" >
+                            <option value="" selected>Selecciona</option>
+                            <option value="{{campana.nombre}}" ng-repeat="campana in campanasAnoActual" >
+                                Campaña {{campana.nombre}}
+                            </option>
+                        </select>
+                    </label>
+
+                </div>
+
+                <label class="login-button">
+                    <input id="ingresar" type="button" value="Enviar" class="button button-block" ng-click="continuar()">
+                </label>
+            </form>
+        </div>
+    </ion-content>
+    <ion-footer-bar >
+        <div class="footer-nutresa">
+            <img src="img/nutresa.png" />
+        </div>
+    </ion-footer-bar>
+</ion-view>

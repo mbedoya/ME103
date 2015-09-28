@@ -1,0 +1,22 @@
+<ion-view view-title="Clave">
+    <ion-content>
+    <div class="content-login padding">
+        <img src="img/creacion-clave.png" class="login-img" />
+        <h4>Es momento de elegir tu clave</h4>
+        <h3>Elige una cifra de 4 dígitos</h3>
+        <form >
+                <label class="login-input">
+                    <input id="txtClaveNuevaClave" class="clave" ng-model="modelo.clave" type="number" >
+                </label>
+                <label class="login-button">
+                    <input id="ingresar" type="button" value="Enviar" class="button button-block" ng-click="continuar()">
+                </label>
+        </form>
+    </div>
+    </ion-content>
+    <ion-footer-bar >
+        <div class="footer-nutresa">
+            <img src="img/nutresa.png" />
+        </div>
+    </ion-footer-bar>
+</ion-view>

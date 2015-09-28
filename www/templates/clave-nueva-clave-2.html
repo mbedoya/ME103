@@ -1,0 +1,21 @@
+<ion-view view-title="Clave">
+    <ion-content>
+        <div class="content-login padding">
+            <img src="img/login.png" class="login-img" />
+            <h3>Confirma la clave elegida</h3>
+            <form ng-submit="capturarCedula()">
+                <label class="login-input">
+                    <input id="clave" class="clave" ng-model="clave" type="number" >
+                </label>
+                <label class="login-button">
+                    <input id="ingresar" type="button" value="Enviar" class="button button-block" ng-click="continuar()">
+                </label>
+            </form>
+        </div>
+    </ion-content>
+    <ion-footer-bar >
+        <div class="footer-nutresa">
+            <img src="img/nutresa.png" />
+        </div>
+    </ion-footer-bar>
+</ion-view>
